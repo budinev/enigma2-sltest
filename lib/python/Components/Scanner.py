@@ -79,6 +79,10 @@ def getType(file):
 
 		if ext == "dat" and file[-11:-6].lower() == "avseq":
 			return "video/x-vcd"
+
+		if ext == "ipk":
+			return "application/x-debian-package"
+
 	return type
 
 
@@ -152,7 +156,7 @@ def scanDevice(mountpoint):
 	scanner = []
 
 	for p in plugins.getPlugins(PluginDescriptor.WHERE_FILESCAN):
-		l = p()
+		l = p.__call__()
 		if not isinstance(l, list):
 			l = [l]
 		scanner += l
@@ -214,7 +218,7 @@ def openList(session, files):
 	scanner = []
 
 	for p in plugins.getPlugins(PluginDescriptor.WHERE_FILESCAN):
-		l = p()
+		l = p.__call__()
 		if not isinstance(l, list):
 			scanner.append(l)
 		else:
