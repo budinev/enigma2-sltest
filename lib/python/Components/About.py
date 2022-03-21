@@ -166,6 +166,7 @@ def getDriverInstalledDate():
 def getPythonVersionString():
 	return "%s.%s.%s" % (version_info.major, version_info.minor, version_info.micro)
 
+
 def GetIPsFromNetworkInterfaces():
 	import socket
 	import fcntl

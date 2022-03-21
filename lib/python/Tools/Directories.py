@@ -72,6 +72,15 @@ scopeFonts = defaultPaths[SCOPE_FONTS][0]
 scopePlugins = defaultPaths[SCOPE_PLUGINS][0]
 
 
+def addInList(*paths):
+	return [path for path in paths if os.path.isdir(path)]
+
+
+skinResolveList = []
+lcdskinResolveList = []
+fontsResolveList = []
+
+
 def resolveFilename(scope, base="", path_prefix=None):
 	if str(base).startswith("~%s" % os.sep):  # You can only use the ~/ if we have a prefix directory.
 		if path_prefix:
